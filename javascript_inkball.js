@@ -14,6 +14,8 @@ var ball_direction = 'right';
 
 var random_direction = 0;
 
+var oldpoint = [0,0];
+
 var linedraw = 1;
 
 var line1 = [];
@@ -44,6 +46,8 @@ function animate_ball(){
 }
 
 function draw() {
+  oldpoint = [mouseX,mouseY];
+  
   fill(0,0,0);
   rect(0,0,1900,850);
   fill(255,255,255);
@@ -67,6 +71,8 @@ function draw() {
   fill(0,0,0);
   stroke(0,0,0);
   
+  oldpoint = [0,0];
+  
   if (drawing){
     try{
       for(i = 0;i<=5000;i+=2){
@@ -74,7 +80,14 @@ function draw() {
         point_x = line1[i];
         point_y = line1[i+1];
         
-        ellipse(point_x,point_y,50,50);
+        strokeWeight(10);
+        
+        if (oldpoint[0] != 0 && oldpoint[1] != 0){
+          line(oldpoint[0],oldpoint[1],point_x,point_y);
+        }
+        
+        //ellipse(point_x,point_y,40,40);
+        oldpoint = [point_x,point_y];
         
         let directdistance = Math.sqrt(((ball_x - line1[i])*(ball_x - line1[i]))+((ball_y - line1[i+1])*(ball_y - line1[i+1])));
         
@@ -125,6 +138,7 @@ function draw() {
     ball_speed_y = -7;
   }
   
+  strokeWeight(2);
   
   }
 
@@ -133,6 +147,8 @@ function mouseDragged(){
   drawing = true;
   
   ellipse(mouseX,mouseY,100,100);
+  
+  oldpoint = [mouseX,mouseY];
   
   if (linedraw == 1){
     line1.push(mouseX);
