@@ -12,7 +12,18 @@ var ball_speed_y = 7
 
 var ball_direction = 'right';
 
-var drawnpoints = [];
+var linedraw = 1;
+
+var line1 = [];
+var line2 = [];
+var line3 = [];
+var line4 = [];
+var line5 = [];
+var line6 = [];
+var line7 = [];
+var line8 = [];
+var line9 = [];
+var line10 = [];
 
 var drawing = false;
 
@@ -33,6 +44,9 @@ function animate_ball(){
   } else if (ball_direction == 'leftdown'){
     ball_x = ball_x - ball_speed_x;
     ball_y = ball_y + ball_speed_y;
+  } else {
+    ball_x = ball_x + ball_speed_x;
+    ball_y = ball_y + ball_speed_y;
   }
   
   if (ball_y >= 793 && ball_direction == 'leftdown'){
@@ -43,6 +57,22 @@ function animate_ball(){
     ball_direction = 'leftdown';
   } else if (ball_y <= 57 && ball_direction == 'rightup'){
     ball_direction = 'rightdown';
+  } else {
+    ball_x = -1 * ball_x;
+    ball_y = -1 * ball_y;
+  }
+  
+  if (ball_y <= 57 && ball_direction == 'leftdown'){
+    ball_direction = 'leftup';
+  } else if (ball_y >= 793 && ball_direction == 'rightdown'){
+    ball_direction = 'rightup';
+  } else if (ball_y <= 57 && ball_direction == 'leftup'){
+    ball_direction = 'leftdown';
+  } else if (ball_y <= 57 && ball_direction == 'rightup'){
+    ball_direction = 'rightdown';
+  } else {
+    ball_x = -1 * ball_x;
+    ball_y = -1 * ball_y;
   }
   
   if (ball_x <= 57){
@@ -51,8 +81,11 @@ function animate_ball(){
        ball_direction = 'rightdown';
     } else if (random_direction == 5) {
        ball_direction = 'right';
-    } else {
+    } else if (random_direction >= 6) {
        ball_direction = 'rightup';
+    } else {
+      ball_x = -1 * ball_x;
+      ball_y = -1 * ball_y;
     }
     ball_speed_x = Math.floor(Math.random() * 12) + 7;
   }  
@@ -63,9 +96,11 @@ function animate_ball(){
            ball_direction = 'leftdown';
         } else if (random_direction == 5) {
            ball_direction = 'left';
-        } else {
+        } else if (random_direction >= 6) {
            ball_direction = 'leftup';
-        }
+        } else {
+    ball_x = -1 * ball_x;
+    ball_y = -1 * ball_y;
         
     ball_speed_x = Math.floor(Math.random() * 12) + 7;
      
@@ -98,21 +133,44 @@ function draw() {
   if (drawing){
     try{
       for(i = 0;i<=5000;i+=2){
-        ellipse(drawnpoints[i],drawnpoints[i+1],30,30);
+        ellipse(line1[i],line1[i+1],30,30);
         
-        let directdistance = Math.sqrt(((ball_x - drawnpoints[i])*(ball_x - drawnpoints[i]))+((ball_y - drawnpoints[i+1])*(ball_y - drawnpoints[i+1])));
+        let directdistance = Math.sqrt(((ball_x - line1[i])*(ball_x - line1[i]))+((ball_y - line1[i+1])*(ball_y - line1[i+1])));
         
-        if (directdistance <= 60){
+        if (directdistance <= 25+15){
+          if (ball_speed_y <= line1[i+1]){
+            ball_speed_y = ball_speed_y - 7;
+            print('sped up');
+          } else {
+            ball_speed_y = ball_speed_y + 7;
+            print('sped down');
+          }
+          
+          ball_direction = 'speed control';
           ball_speed_x = -1 * ball_speed_x;
-          ball_speed_y = -1 * ball_speed_y;
+          line1 = [];
         }
     
     }
 
     } catch(error){
       let blank = '';
+    }  
+    try{
+      for(i = 0;i<=5000;i+=2){
+        ellipse(line2[i],line2[i+1],30,30);
+        
+        let directdistance = Math.sqrt(((ball_x - line2[i])*(ball_x - line2[i]))+((ball_y - line2[i+1])*(ball_y - line2[i+1])));
+        
+        if (directdistance <= 60){
+          ball_speed_x = -1 * ball_speed_x;
+          ball_speed_y = -1 * ball_speed_y;
+        }
     }
-    
+
+    } catch(error){
+      let blank = '';
+    } 
   }
   }
 
@@ -122,7 +180,8 @@ function mouseDragged(){
   
   ellipse(mouseX,mouseY,100,100);
   
-  drawnpoints.push(mouseX);
-  drawnpoints.push(mouseY);
-  
+  if (linedraw == 1){
+    line1.push(mouseX);
+    line1.push(mouseY);
+  }
 }
