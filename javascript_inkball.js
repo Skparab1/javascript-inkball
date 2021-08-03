@@ -1,5 +1,7 @@
 function setup() {
   createCanvas(1900,850);
+  
+  background(0,0,0);
 
 }
 
@@ -46,6 +48,8 @@ function animate_ball(){
 }
 
 function draw() {
+  print(linedraw);
+  
   oldpoint = [mouseX,mouseY];
   
   fill(0,0,0);
@@ -73,61 +77,328 @@ function draw() {
   
   oldpoint = [0,0];
   
-  if (drawing){
-    try{
-      for(i = 0;i<=5000;i+=2){
-        
-        point_x = line1[i];
-        point_y = line1[i+1];
-        
-        strokeWeight(10);
-        
-        if (oldpoint[0] != 0 && oldpoint[1] != 0){
-          line(oldpoint[0],oldpoint[1],point_x,point_y);
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line1[i];
+      point_y = line1[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
         }
         
-        //ellipse(point_x,point_y,40,40);
-        oldpoint = [point_x,point_y];
-        
-        let directdistance = Math.sqrt(((ball_x - line1[i])*(ball_x - line1[i]))+((ball_y - line1[i+1])*(ball_y - line1[i+1])));
-        
-        if (directdistance <= 25+15){
-          if (ball_speed_y <= line1[i+1]){
-            ball_speed_y = -1 * (ball_speed_y + 7);
-            print('sped up');
-          } else {
-            ball_speed_y = -1 * (ball_speed_y + 7);
-            print('sped down');
-          }
-          
-          ball_direction = 'speed control';
-          ball_speed_x = -1 * ball_speed_x;
-          line1 = [];
-        }
-    
-    }
-
-    } catch(error){
-      let blank = '';
-    } 
-    
-    try{
-      for(i = 0;i<=5000;i+=2){
-        ellipse(line2[i],line2[i+1],30,30);
-        
-        let directdistance = Math.sqrt(((ball_x - line2[i])*(ball_x - line2[i]))+((ball_y - line2[i+1])*(ball_y - line2[i+1])));
-        
-        if (directdistance <= 60){
-          ball_speed_x = -1 * ball_speed_x;
-          ball_speed_y = -1 * ball_speed_y;
-        }
-    }
-
-    } catch(error){
-      let blank = '';
-    }  
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
   }
+  } catch(error){
+    let blank = '';
+  } 
   
+    
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line2[i];
+      point_y = line2[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line3[i];
+      point_y = line3[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line4[i];
+      point_y = line4[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line5[i];
+      point_y = line5[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line6[i];
+      point_y = line6[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line7[i];
+      point_y = line7[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line8[i];
+      point_y = line8[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line9[i];
+      point_y = line9[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line10[i];
+      point_y = line10[i+1];
+      strokeWeight(10);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 25+15){
+        if (ball_speed_y <= point_y){
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped up');
+        } else {
+          ball_speed_y = -1 * (ball_speed_y + 7);
+          print('sped down');
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+        line1 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  } 
+
+
   if (ball_speed_x > 7){
       ball_speed_x = 7;
   } else if (ball_speed_x < -7){
@@ -139,6 +410,9 @@ function draw() {
   }
   
   strokeWeight(2);
+  
+  
+  drawing = false;
   
   }
 
@@ -153,5 +427,37 @@ function mouseDragged(){
   if (linedraw == 1){
     line1.push(mouseX);
     line1.push(mouseY);
+  } else if(linedraw == 2){
+    line2.push(mouseX);
+    line2.push(mouseY);
+  } else if(linedraw == 3){
+    line3.push(mouseX);
+    line3.push(mouseY);
+  } else if(linedraw == 4){
+    line4.push(mouseX);
+    line4.push(mouseY);
+  } else if(linedraw == 5){
+    line5.push(mouseX);
+    line5.push(mouseY);
+  } else if(linedraw == 6){
+    line6.push(mouseX);
+    line6.push(mouseY);
+  } else if(linedraw == 7){
+    line7.push(mouseX);
+    line7.push(mouseY);
+  } else if(linedraw == 8){
+    line8.push(mouseX);
+    line8.push(mouseY);
+  } else if(linedraw == 9){
+    line9.push(mouseX);
+    line9.push(mouseY);
+  } else if(linedraw == 10){
+    line10.push(mouseX);
+    line10.push(mouseY);
   }
+}
+
+function mouseReleased(){
+  linedraw += 1;
+  oldpoint = [];
 }
