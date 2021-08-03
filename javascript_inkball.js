@@ -8,9 +8,11 @@ var ball_y = 500;
 
 var ball_speed_x = 7;
 
-var ball_speed_y = 7
+var ball_speed_y = 0;
 
 var ball_direction = 'right';
+
+var random_direction = 0;
 
 var linedraw = 1;
 
@@ -28,83 +30,17 @@ var line10 = [];
 var drawing = false;
 
 function animate_ball(){
-  if (ball_direction == 'right'){
-    ball_x = ball_x + ball_speed_x;
-  } else if (ball_direction == 'rightup'){
-    ball_x = ball_x + ball_speed_x;
-    ball_y = ball_y - ball_speed_y;
-  } else if (ball_direction == 'rightdown'){
-    ball_x = ball_x + ball_speed_x;
-    ball_y = ball_y + ball_speed_y;
-  } else if (ball_direction == 'left'){
-    ball_x = ball_x - ball_speed_x;
-  } else if (ball_direction == 'leftup'){
-    ball_x = ball_x - ball_speed_x;
-    ball_y = ball_y - ball_speed_y;
-  } else if (ball_direction == 'leftdown'){
-    ball_x = ball_x - ball_speed_x;
-    ball_y = ball_y + ball_speed_y;
-  } else {
-    ball_x = ball_x + ball_speed_x;
-    ball_y = ball_y + ball_speed_y;
+  ball_x = ball_x + ball_speed_x;
+  ball_y = ball_y + ball_speed_y;
+  
+  if (ball_y <= 50 || ball_y >= 750){
+    ball_speed_y = -1 * ball_speed_y;
   }
   
-  if (ball_y >= 793 && ball_direction == 'leftdown'){
-    ball_direction = 'leftup';
-  } else if (ball_y >= 793 && ball_direction == 'rightdown'){
-    ball_direction = 'rightup';
-  } else if (ball_y <= 57 && ball_direction == 'leftup'){
-    ball_direction = 'leftdown';
-  } else if (ball_y <= 57 && ball_direction == 'rightup'){
-    ball_direction = 'rightdown';
-  } else {
-    ball_x = -1 * ball_x;
-    ball_y = -1 * ball_y;
-  }
-  
-  if (ball_y <= 57 && ball_direction == 'leftdown'){
-    ball_direction = 'leftup';
-  } else if (ball_y >= 793 && ball_direction == 'rightdown'){
-    ball_direction = 'rightup';
-  } else if (ball_y <= 57 && ball_direction == 'leftup'){
-    ball_direction = 'leftdown';
-  } else if (ball_y <= 57 && ball_direction == 'rightup'){
-    ball_direction = 'rightdown';
-  } else {
-    ball_x = -1 * ball_x;
-    ball_y = -1 * ball_y;
-  }
-  
-  if (ball_x <= 57){
-    random_direction = Math.floor(Math.random() * 10);
-    if (random_direction <= 4){
-       ball_direction = 'rightdown';
-    } else if (random_direction == 5) {
-       ball_direction = 'right';
-    } else if (random_direction >= 6) {
-       ball_direction = 'rightup';
-    } else {
-      ball_x = -1 * ball_x;
-      ball_y = -1 * ball_y;
-    }
-    ball_speed_x = Math.floor(Math.random() * 12) + 7;
+  if (ball_x <= 50 || ball_x >= 1793){
+    ball_speed_y = -1 * ball_speed_y;
+    ball_speed_x = -1 * ball_speed_x;
   }  
-  
-  if (ball_x >= 1793){
-        random_direction = Math.floor(Math.random() * 10);
-        if (random_direction <= 4){
-           ball_direction = 'leftdown';
-        } else if (random_direction == 5) {
-           ball_direction = 'left';
-        } else if (random_direction >= 6) {
-           ball_direction = 'leftup';
-        } else {
-    ball_x = -1 * ball_x;
-    ball_y = -1 * ball_y;
-        
-    ball_speed_x = Math.floor(Math.random() * 12) + 7;
-     
-  }
 }
 
 function draw() {
@@ -133,8 +69,38 @@ function draw() {
   if (drawing){
     try{
       for(i = 0;i<=5000;i+=2){
-        ellipse(line1[i],line1[i+1],30,30);
-        
+        for(j = 0;j<=5000;j+=1){
+          try{
+            point_x = line1[i];
+            point_y = line1[i+1];
+            
+            nextcoordinate_x = line1[i+2];
+            nextcoordinate_y = line1[i+3];
+            
+            if (nextcoordinate_x < point_x) {
+              point_x -= 1;
+            } else if (nextcoordinate_x > point_x){
+              point_x += 1;
+            } 
+            
+            if (nextcoordinate_y < point_y) {
+              point_y -= 1;
+            } else if (nextcoordinate_y > point_y){
+              point_y += 1;
+            }
+            
+            if (nextcoordinate_x == point_x && nextcoordinate_y == point_y){
+              break
+            }
+          } 
+           
+
+          
+          ellipse(point_x,point_y,30,30);
+          } catch(error){
+            blank = '';
+          }
+        }
         let directdistance = Math.sqrt(((ball_x - line1[i])*(ball_x - line1[i]))+((ball_y - line1[i+1])*(ball_y - line1[i+1])));
         
         if (directdistance <= 25+15){
