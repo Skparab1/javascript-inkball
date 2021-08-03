@@ -59,6 +59,7 @@ function draw() {
   fill(200,200,200);
   ellipse(1800,750,75,75);
   
+  fill(0,0,200);
   ellipse(ball_x,ball_y,50,50);
   
   setTimeout(animate_ball, 1000);
@@ -69,46 +70,20 @@ function draw() {
   if (drawing){
     try{
       for(i = 0;i<=5000;i+=2){
-        for(j = 0;j<=5000;j+=1){
-          try{
-            point_x = line1[i];
-            point_y = line1[i+1];
-            
-            nextcoordinate_x = line1[i+2];
-            nextcoordinate_y = line1[i+3];
-            
-            if (nextcoordinate_x < point_x) {
-              point_x -= 1;
-            } else if (nextcoordinate_x > point_x){
-              point_x += 1;
-            } 
-            
-            if (nextcoordinate_y < point_y) {
-              point_y -= 1;
-            } else if (nextcoordinate_y > point_y){
-              point_y += 1;
-            }
-            
-            if (nextcoordinate_x == point_x && nextcoordinate_y == point_y){
-              break
-            }
-          } 
-           
-
-          
-          ellipse(point_x,point_y,30,30);
-          } catch(error){
-            blank = '';
-          }
-        }
+        
+        point_x = line1[i];
+        point_y = line1[i+1];
+        
+        ellipse(point_x,point_y,50,50);
+        
         let directdistance = Math.sqrt(((ball_x - line1[i])*(ball_x - line1[i]))+((ball_y - line1[i+1])*(ball_y - line1[i+1])));
         
         if (directdistance <= 25+15){
           if (ball_speed_y <= line1[i+1]){
-            ball_speed_y = ball_speed_y - 7;
+            ball_speed_y = -1 * (ball_speed_y + 7);
             print('sped up');
           } else {
-            ball_speed_y = ball_speed_y + 7;
+            ball_speed_y = -1 * (ball_speed_y + 7);
             print('sped down');
           }
           
@@ -121,7 +96,8 @@ function draw() {
 
     } catch(error){
       let blank = '';
-    }  
+    } 
+    
     try{
       for(i = 0;i<=5000;i+=2){
         ellipse(line2[i],line2[i+1],30,30);
@@ -136,8 +112,20 @@ function draw() {
 
     } catch(error){
       let blank = '';
-    } 
+    }  
   }
+  
+  if (ball_speed_x > 7){
+      ball_speed_x = 7;
+  } else if (ball_speed_x < -7){
+    ball_speed_y = -7;
+  } else if (ball_speed_y > 7){
+    ball_speed_y = 7;
+  } else if (ball_speed_y < -7){
+    ball_speed_y = -7;
+  }
+  
+  
   }
 
 function mouseDragged(){
