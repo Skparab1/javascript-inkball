@@ -6,7 +6,7 @@
 
 # images of game below
 
-![](inkball.png)
+![](images/inkball.png)
 
 
 latest commit will likely be unstable.
