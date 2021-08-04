@@ -8,8 +8,8 @@ function setup() {
 var ball_x = 1000;
 var ball_y = 500;
 
-var ball2_x = 1000;
-var ball2_y = 500;
+var ball2_x = 900;
+var ball2_y = 475;
 
 var ball_speed_x = 7;
 var ball_speed_y = 0;
@@ -29,10 +29,13 @@ var linedraw = 1;
 
 var lineangle = '';
 
+var ballhit = 0;
+
 var line1 = [];
 var line2 = [];
 var line3 = [];
 var line4 = [];
+var line5 = [];
 
 var drawing = false;
 
@@ -130,6 +133,8 @@ function draw() {
   rect(0,0,1900,850);
   fill(255,255,255);
   rect(50,50,1800,750);
+  fill(0,0,0);
+  //rect(950,400,50,500);
   
   fill(200,0,0);
   rect(50,50,100,100);
@@ -146,7 +151,7 @@ function draw() {
   fill(200,0,0);
   ellipse(ball2_x,ball2_y,50,50);
   
-  setTimeout(animate_ball, 1000);
+  requestAnimationFrame(animate_ball, 700);
   
   fill(0,0,0);
   stroke(0,0,0);
@@ -183,7 +188,7 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line2[i];
       point_y = line2[i+1];
-      strokeWeight(20);
+      strokeWeight(25);
       
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
@@ -267,6 +272,36 @@ function draw() {
   } catch(error){
     let blank = '';
   }  
+  
+  try{
+    for(i = 0;i<=5000;i+=2){
+      point_x = line5[i];
+      point_y = line5[i+1];
+      strokeWeight(25);
+      
+      if (oldpoint[0] != 0 && oldpoint[1] != 0){
+        line(oldpoint[0],oldpoint[1],point_x,point_y);
+      }
+      
+      oldpoint = [point_x,point_y];
+      
+      let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
+      
+      if (directdistance <= 50){
+        bounceball(point_x,point_y);
+        ball_direction = 'speed control';
+        line5 = [];
+      }
+      
+      let directdistance2 = Math.sqrt(((ball2_x - point_x)*(ball2_x - point_x))+((ball2_y - point_y)*(ball2_y - point_y)));
+      if (directdistance2 <= 50){
+        bounceball2(point_x,point_y);
+        line5 = [];
+      }
+  }
+  } catch(error){
+    let blank = '';
+  }
 
   if (ball_speed_x > 7){
       ball_speed_x = 7;
@@ -288,13 +323,14 @@ function draw() {
   
   let balldistance = Math.sqrt(((ball_x - ball2_x)*(ball_x - ball2_x))+((ball_y - ball2_y)*(ball_y - ball2_y)));
   
-  if (balldistance <= 50){
+  if (balldistance <= 50 && ballhit >= 5){
     storer = ball2_speed_y;
     ball2_speed_y = ball2_speed_x;
     ball2_speed_x = storer;
     storer = ball_speed_y;
     ball_speed_y = ball_speed_x;
     ball_speed_x = storer;
+    ballhit = 0;
   }
 
   if (ball_x >= 1770 && ball_x <= 1830 && ball_y >= 720 && ball_y <= 780){
@@ -307,6 +343,42 @@ function draw() {
     textSize(60);
     text('YOU WIN',900,325);   
   }
+  if (ball2_x >= 50 && ball2_x <= 180 && ball2_y >= 50 && ball2_y <= 180){
+    ball2_x = 100;
+    ball2_y = 100;
+    ball2_speed_x = 0;
+    ball2_speed_y = 0;
+  }
+  if (ball2_x >= 100 && ball2_y == 100){
+    textSize(60);
+    text('YOU WIN',900,325);   
+  }
+  if (ball_x >= 50 && ball_x <= 180 && ball_y >= 50 && ball_y <= 180){
+    ball_x = 100;
+    ball_y = 100;
+    ball_speed_x = 0;
+    ball_speed_y = 0;
+    ball2_speed_x = 0;
+    ball2_speed_y = 0;
+  }
+  if (ball_x >= 100 && ball_y == 100){
+    textSize(60);
+    text('YOU LOSE: Ball entered hole of WRONG color',600,325);   
+  }
+  if (ball2_x >= 1770 && ball2_x <= 1830 && ball2_y >= 720 && ball2_y <= 780){
+    ball2_x = 1800;
+    ball2_y = 750;
+    ball2_speed_x = 0;
+    ball2_speed_y = 0;
+    ball_speed_x = 0;
+    ball_speed_y = 0;
+  }
+  if (ball2_x >= 1800 && ball2_y == 750){
+    textSize(60);
+    text('YOU LOSE: Ball entered hole of WRONG color',600,325);   
+  }
+  
+  ballhit += 1;
   }
 
 function mouseDragged(){
@@ -325,6 +397,8 @@ function mouseDragged(){
     linedraw = 3;
   } else if (line4 == []){
     linedraw = 4;
+  } else if (line5 == []){
+    linedraw = 5;
   }
   
   
@@ -346,6 +420,10 @@ function mouseDragged(){
     lastwrittento = 4;
     line4.push(mouseX);
     line4.push(mouseY);
+  } else if(linedraw == 5){
+    lastwrittento = 5;
+    line5.push(mouseX);
+    line5.push(mouseY);
   }
 }
 function mouseReleased(){
@@ -359,6 +437,9 @@ function mouseReleased(){
     line4 = [];
   }
   if (linedraw == 4){
+    line5 = [];
+  }
+  if (linedraw == 5){
     line1 = [];
     linedraw = 0;
   }
