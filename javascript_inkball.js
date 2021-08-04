@@ -100,16 +100,16 @@ function draw() {
             print('\  ');
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_x = storer;
           }
         } else {
           if (oldpoint[0] <= point_x){
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
           } else {
             storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_y = ball_speed_x;
             ball_speed_x = storer;
           }
         }
@@ -149,16 +149,16 @@ function draw() {
             print('\  ');
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_x = storer;
           }
         } else {
           if (oldpoint[0] <= point_x){
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
           } else {
             storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_y = ball_speed_x;
             ball_speed_x = storer;
           }
         }
