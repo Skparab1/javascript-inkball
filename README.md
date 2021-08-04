@@ -9,9 +9,11 @@
 
 - The game also ends when then the ball goes into its hole
 
-# images of game below
+# gif of game below
 
 ![](inkball_gif2.gif)
+
+the ball animation is actually much smoother than what it shows because the gif's frame rate is low
 
 fyi i'm using the processing editor for this project
 
