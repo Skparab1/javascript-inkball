@@ -3,7 +3,8 @@
 - The video game inkball in JavaScript
 
 - drawing and ball moving works well
-  - however, only 3 lines can be drawn at one time... I tried increasing it but then its slow
+  - however, only 4 lines can be drawn at one time
+  - 4 lines should be enough but i can increase it
 
 - ball bounces in wrong direction
 
