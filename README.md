@@ -11,7 +11,7 @@
 
 # images of game below
 
-![](images/inkball_gif.gif)
+![](images/inkball_gif2.gif)
 
 fyi i'm using the processing editor for this project
 
