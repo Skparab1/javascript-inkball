@@ -76,7 +76,7 @@ function bounceball(directdistance,oldpoint,point_x,point_y){
 }
 
 function draw() {
-  frameRate(1000);
+  frameRate(50000);
   print(linedraw);
   
   oldpoint = [mouseX,mouseY];
@@ -116,8 +116,32 @@ function draw() {
       }
       oldpoint = [point_x,point_y];
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
-      bounceball(directdistance,oldpoint,point_x,point_y); 
+      if (directdistance <= 50){
+        if (oldpoint[1] <= point_y){
+          if (oldpoint[0] <= point_x){
+            print('/');
+            storer = ball_speed_y;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
+          } else {
+            print('\  ');
+            storer = ball_speed_y;
+            ball_speed_y = ball_speed_x;
+            ball_speed_x = storer;
+          }
+        } else {
+          if (oldpoint[0] <= point_x){
+            storer = ball_speed_y;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
+          } else {
+            storer = ball_speed_y;
+            ball_speed_y = ball_speed_x;
+            ball_speed_x = storer;
+          }
+        }
       line1 = [];
+      }
     }
   } catch(error){
     let blank = '';
@@ -164,7 +188,6 @@ function draw() {
         }
         
         ball_direction = 'speed control';
-        ball_speed_x = -1 * ball_speed_x;
         line2 = [];
       }
   }
@@ -212,7 +235,6 @@ function draw() {
         }
         
         ball_direction = 'speed control';
-        ball_speed_x = -1 * ball_speed_x;
         line3 = [];
       }
   }
