@@ -60,7 +60,7 @@ function animate_ball(){
   }
 }
 
-function bounceball(directdistance,oldpoint,point_x,point_y){
+function bounceball(point_x,point_y){
   if (oldpoint[1] <= point_y){
     if (oldpoint[0] <= point_x){
       print('num 1');
@@ -87,7 +87,36 @@ function bounceball(directdistance,oldpoint,point_x,point_y){
     }
   }
   ball_direction = 'speed control';
-  return ball_speed_x, ball_speed_y;
+        
+}
+
+function bounceball2(point_x,point_y){
+  if (oldpoint[1] <= point_y){
+    if (oldpoint[0] <= point_x){
+      print('num 1');
+      storer = ball2_speed_y;
+      ball2_speed_y = -1 * ball2_speed_x;
+      ball2_speed_x = storer;
+    } else {
+      print('num 2');
+      storer = ball2_speed_y;
+      ball2_speed_y = ball2_speed_x;
+      ball2_speed_x = storer;
+    }
+  } else {
+    if (oldpoint[0] <= point_x){
+      print('num 3');
+      storer = ball2_speed_y;
+      ball2_speed_y = -1 * ball2_speed_x;
+      ball2_speed_x = storer;
+    } else {
+      print('num 4');
+      storer = ball2_speed_y;
+      ball2_speed_y = ball2_speed_x;
+      ball2_speed_x = storer;
+    }
+  }
+  ball_direction = 'speed control';
         
 }
 
@@ -135,8 +164,13 @@ function draw() {
       oldpoint = [point_x,point_y];
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
       if (directdistance <= 50){
-        bounceball(directdistance,oldpoint,point_x,point_y);
-    
+        bounceball(point_x,point_y);
+        line1 = [];
+      }
+      
+      let directdistance2 = Math.sqrt(((ball2_x - point_x)*(ball2_x - point_x))+((ball2_y - point_y)*(ball2_y - point_y)));
+      if (directdistance2 <= 50){
+        bounceball2(point_x,point_y);
         line1 = [];
       }
     }
@@ -160,33 +194,14 @@ function draw() {
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
       
       if (directdistance <= 50){
-        if (oldpoint[1] <= point_y){
-          if (oldpoint[0] <= point_x){
-            print('num 1');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 2');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        } else {
-          if (oldpoint[0] <= point_x){
-            print('num 3');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 4');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        }
-        
+        bounceball(point_x,point_y);
         ball_direction = 'speed control';
+        line2 = [];
+      }
+      
+      let directdistance2 = Math.sqrt(((ball2_x - point_x)*(ball2_x - point_x))+((ball2_y - point_y)*(ball2_y - point_y)));
+      if (directdistance2 <= 50){
+        bounceball2(point_x,point_y);
         line2 = [];
       }
   }
@@ -209,33 +224,13 @@ function draw() {
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
       
       if (directdistance <= 50){
-        if (oldpoint[1] <= point_y){
-          if (oldpoint[0] <= point_x){
-            print('num 1');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 2');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        } else {
-          if (oldpoint[0] <= point_x){
-            print('num 3');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 4');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        }
-        
+        bounceball(point_x,point_y);
         ball_direction = 'speed control';
+        line3 = [];
+      }
+      let directdistance2 = Math.sqrt(((ball2_x - point_x)*(ball2_x - point_x))+((ball2_y - point_y)*(ball2_y - point_y)));
+      if (directdistance2 <= 50){
+        bounceball2(point_x,point_y);
         line3 = [];
       }
   }
@@ -258,31 +253,14 @@ function draw() {
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
       
       if (directdistance <= 50){
-        if (oldpoint[1] <= point_y){
-          if (oldpoint[0] <= point_x){
-            print('num 1');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 2');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        } else {
-          if (oldpoint[0] <= point_x){
-            print('num 3');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('num 4');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        }
+        bounceball(point_x,point_y);
+        ball_direction = 'speed control';
+        line4 = [];
+      }
+      
+      let directdistance2 = Math.sqrt(((ball2_x - point_x)*(ball2_x - point_x))+((ball2_y - point_y)*(ball2_y - point_y)));
+      if (directdistance2 <= 50){
+        bounceball2(point_x,point_y);
         line4 = [];
       }
   }
@@ -308,6 +286,17 @@ function draw() {
   
   drawing = false;
   
+  let balldistance = Math.sqrt(((ball_x - ball2_x)*(ball_x - ball2_x))+((ball_y - ball2_y)*(ball_y - ball2_y)));
+  
+  if (balldistance <= 50){
+    storer = ball2_speed_y;
+    ball2_speed_y = ball2_speed_x;
+    ball2_speed_x = storer;
+    storer = ball_speed_y;
+    ball_speed_y = ball_speed_x;
+    ball_speed_x = storer;
+  }
+
   if (ball_x >= 1770 && ball_x <= 1830 && ball_y >= 720 && ball_y <= 780){
     ball_x = 1800;
     ball_y = 750;
