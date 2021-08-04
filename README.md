@@ -6,6 +6,8 @@
 
 # images of game below
 
+![](inkball.png)
+
 
 latest commit will likely be unstable.
 
