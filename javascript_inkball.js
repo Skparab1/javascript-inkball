@@ -44,6 +44,37 @@ function animate_ball(){
   }  
 }
 
+function bounceball(directdistance,oldpoint,point_x,point_y){
+  if (directdistance <= 50){
+        if (oldpoint[1] <= point_y){
+          if (oldpoint[0] <= point_x){
+            print('/');
+            storer = ball_speed_y;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
+          } else {
+            print('\  ');
+            storer = ball_speed_y;
+            ball_speed_y = ball_speed_x;
+            ball_speed_x = storer;
+          }
+        } else {
+          if (oldpoint[0] <= point_x){
+            storer = ball_speed_y;
+            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_x = storer;
+          } else {
+            storer = ball_speed_y;
+            ball_speed_y = ball_speed_x;
+            ball_speed_x = storer;
+          }
+        }
+        
+        ball_direction = 'speed control';
+        ball_speed_x = -1 * ball_speed_x;
+      }
+}
+
 function draw() {
   frameRate(1000);
   print(linedraw);
@@ -79,46 +110,15 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line1[i];
       point_y = line1[i+1];
-      strokeWeight(25);
-      
+      strokeWeight(25); 
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
       }
-      
       oldpoint = [point_x,point_y];
-      
       let directdistance = Math.sqrt(((ball_x - point_x)*(ball_x - point_x))+((ball_y - point_y)*(ball_y - point_y)));
-      
-      if (directdistance <= 50){
-        if (oldpoint[1] <= point_y){
-          if (oldpoint[0] <= point_x){
-            print('/');
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            print('\  ');
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        } else {
-          if (oldpoint[0] <= point_x){
-            storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = storer;
-          } else {
-            storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
-            ball_speed_x = storer;
-          }
-        }
-        
-        ball_direction = 'speed control';
-        ball_speed_x = -1 * ball_speed_x;
-        line1 = [];
-      }
-  }
+      bounceball(directdistance,oldpoint,point_x,point_y); 
+      line1 = [];
+    }
   } catch(error){
     let blank = '';
   } 
@@ -196,7 +196,7 @@ function draw() {
           } else {
             print('\  ');
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
+            ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           }
         } else {
@@ -206,7 +206,7 @@ function draw() {
             ball_speed_x = storer;
           } else {
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
+            ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           }
         }
@@ -260,6 +260,10 @@ function draw() {
     ball_speed_y = 7;
   } else if (ball_speed_y < -7){
     ball_speed_y = -7;
+  }
+  
+  if (ball_speed_x == 0 && ball_speed_y == 0){
+    ball_speed_x = 7;
   }
   
   strokeWeight(2);
