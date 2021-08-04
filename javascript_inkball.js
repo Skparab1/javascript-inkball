@@ -40,13 +40,12 @@ function animate_ball(){
   }
   
   if (ball_x <= 50 || ball_x >= 1793){
-    ball_speed_y = -1 * ball_speed_y;
     ball_speed_x = -1 * ball_speed_x;
   }  
 }
 
 function draw() {
-  frameRate(60);
+  frameRate(1000);
   print(linedraw);
   
   oldpoint = [mouseX,mouseY];
@@ -80,7 +79,7 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line1[i];
       point_y = line1[i+1];
-      strokeWeight(10);
+      strokeWeight(25);
       
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
@@ -93,10 +92,12 @@ function draw() {
       if (directdistance <= 50){
         if (oldpoint[1] <= point_y){
           if (oldpoint[0] <= point_x){
+            print('/');
             storer = ball_speed_y;
             ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           } else {
+            print('\  ');
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
             ball_speed_x = -1 * storer;
@@ -104,11 +105,11 @@ function draw() {
         } else {
           if (oldpoint[0] <= point_x){
             storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_y = ball_speed_x;
             ball_speed_x = -1 * storer;
           } else {
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
+            ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           }
         }
@@ -127,7 +128,7 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line2[i];
       point_y = line2[i+1];
-      strokeWeight(10);
+      strokeWeight(20);
       
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
@@ -140,10 +141,12 @@ function draw() {
       if (directdistance <= 50){
         if (oldpoint[1] <= point_y){
           if (oldpoint[0] <= point_x){
+            print('/');
             storer = ball_speed_y;
             ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           } else {
+            print('\  ');
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
             ball_speed_x = -1 * storer;
@@ -151,11 +154,11 @@ function draw() {
         } else {
           if (oldpoint[0] <= point_x){
             storer = ball_speed_y;
-            ball_speed_y = -1 * ball_speed_x;
+            ball_speed_y = ball_speed_x;
             ball_speed_x = -1 * storer;
           } else {
             storer = ball_speed_y;
-            ball_speed_y = ball_speed_x;
+            ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           }
         }
@@ -173,7 +176,7 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line3[i];
       point_y = line3[i+1];
-      strokeWeight(10);
+      strokeWeight(25);
       
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
@@ -186,19 +189,21 @@ function draw() {
       if (directdistance <= 50){
         if (oldpoint[1] <= point_y){
           if (oldpoint[0] <= point_x){
+            print('/');
             storer = ball_speed_y;
             ball_speed_y = -1 * ball_speed_x;
             ball_speed_x = storer;
           } else {
+            print('\  ');
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_x = storer;
           }
         } else {
           if (oldpoint[0] <= point_x){
             storer = ball_speed_y;
             ball_speed_y = -1 * ball_speed_x;
-            ball_speed_x = -1 * storer;
+            ball_speed_x = storer;
           } else {
             storer = ball_speed_y;
             ball_speed_y = ball_speed_x;
@@ -219,7 +224,7 @@ function draw() {
     for(i = 0;i<=5000;i+=2){
       point_x = line4[i];
       point_y = line4[i+1];
-      strokeWeight(10);
+      strokeWeight(25);
       
       if (oldpoint[0] != 0 && oldpoint[1] != 0){
         line(oldpoint[0],oldpoint[1],point_x,point_y);
@@ -259,9 +264,18 @@ function draw() {
   
   strokeWeight(2);
   
-  
   drawing = false;
   
+  if (ball_x >= 1770 && ball_x <= 1830 && ball_y >= 720 && ball_y <= 780){
+    ball_x = 1800;
+    ball_y = 750;
+    ball_speed_x = 0;
+    ball_speed_y = 0;
+  }
+  if (ball_x >= 1800 && ball_y == 750){
+    textSize(60);
+    text('YOU WIN',900,325);   
+  }
   }
 
 function mouseDragged(){
