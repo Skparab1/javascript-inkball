@@ -323,7 +323,7 @@ function draw() {
   
   let balldistance = Math.sqrt(((ball_x - ball2_x)*(ball_x - ball2_x))+((ball_y - ball2_y)*(ball_y - ball2_y)));
   
-  if (balldistance <= 50 && ballhit >= 5){
+  if (balldistance <= 50 && ballhit >= 10){
     storer = ball2_speed_y;
     ball2_speed_y = ball2_speed_x;
     ball2_speed_x = storer;
