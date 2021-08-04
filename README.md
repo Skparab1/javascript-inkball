@@ -10,6 +10,8 @@
 
 - The game also ends when then the ball goes into its hole
 
+- there is only one level with no obstacles, more can be added later
+
 # gif of game below
 
 ![](inkball_gif2.gif)
