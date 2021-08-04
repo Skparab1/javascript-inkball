@@ -9,6 +9,7 @@
 
 ![](images/inkball.png)
 
+fyi im using the processing editor for this project
 
 latest commit will likely be unstable.
 
