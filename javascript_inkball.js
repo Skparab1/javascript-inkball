@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(1900,850);
+  createCanvas(2000,850);
   
   background(0,0,0);
 
@@ -31,6 +31,11 @@ var lineangle = '';
 
 var ballhit = 0;
 
+var pausex1 = 0;
+var pausey1 = 0;
+var pausex2 = 0;
+var pausey2 = 0;
+
 var line1 = [];
 var line2 = [];
 var line3 = [];
@@ -40,26 +45,28 @@ var line5 = [];
 var drawing = false;
 
 function animate_ball(){
-  ball_x = ball_x + ball_speed_x;
-  ball_y = ball_y + ball_speed_y;
-  
-  if (ball_y <= 50 || ball_y >= 750){
-    ball_speed_y = -1 * ball_speed_y;
-  }
-  
-  if (ball_x <= 50 || ball_x >= 1793){
-    ball_speed_x = -1 * ball_speed_x;
-  } 
-  
-  ball2_x = ball2_x + ball2_speed_x;
-  ball2_y = ball2_y + ball2_speed_y;
-  
-  if (ball2_y <= 50 || ball2_y >= 750){
-    ball2_speed_y = -1 * ball2_speed_y;
-  }
-  
-  if (ball2_x <= 50 || ball2_x >= 1793){
-    ball2_speed_x = -1 * ball2_speed_x;
+  if (pausex1 == 0 && pausey1 == 0 && pausex2 == 0 && pausey2 == 0){
+    ball_x = ball_x + ball_speed_x;
+    ball_y = ball_y + ball_speed_y;
+    
+    if (ball_y <= 50 || ball_y >= 750){
+      ball_speed_y = -1 * ball_speed_y;
+    }
+    
+    if (ball_x <= 50 || ball_x >= 1793){
+      ball_speed_x = -1 * ball_speed_x;
+    } 
+    
+    ball2_x = ball2_x + ball2_speed_x;
+    ball2_y = ball2_y + ball2_speed_y;
+    
+    if (ball2_y <= 50 || ball2_y >= 750){
+      ball2_speed_y = -1 * ball2_speed_y;
+    }
+    
+    if (ball2_x <= 50 || ball2_x >= 1793){
+      ball2_speed_x = -1 * ball2_speed_x;
+    }
   }
 }
 
@@ -130,11 +137,19 @@ function draw() {
   oldpoint = [mouseX,mouseY];
   
   fill(0,0,0);
-  rect(0,0,1900,850);
+  rect(0,0,2000,850);
   fill(255,255,255);
   rect(50,50,1800,750);
-  fill(0,0,0);
-  //rect(950,400,50,500);
+  fill(200,200,0);
+  rect(1870,100,100,100);
+  strokeWeight(2);
+  textSize(20);
+  fill(0,0,200);
+  text('Pause',1890,150);
+  fill(200,100,0);
+  rect(1870,300,100,100);
+  fill(0,0,200);
+  text('Restart',1890,350);
   
   fill(200,0,0);
   rect(50,50,100,100);
@@ -313,8 +328,8 @@ function draw() {
     ball_speed_y = -7;
   }
   
-  if (ball_speed_x == 0 && ball_speed_y == 0){
-    ball_speed_x = 7;
+  if (ball_speed_x == 0 && ball_speed_y == 0 && pausex1 == 0 && pausey1 == 0 && pausex2 == 0 && pausey2 == 0){
+    //ball_speed_x = 7;
   }
   
   strokeWeight(2);
@@ -446,4 +461,35 @@ function mouseReleased(){
   
   linedraw += 1;
   oldpoint = [];
+  print(pausex1);
+}
+
+function mouseClicked(){
+  if (mouseX >= 1870 && mouseX <= 1970 && mouseY >= 100 && mouseY <= 200 && pausex1 == 0){
+    pausex1 = ball_speed_x;
+    pausey1 = ball_speed_y;
+    pausex2 = ball2_speed_x;
+    pausey2 = ball2_speed_y;
+    
+    ball_speed_x = 0;
+    ball_speed_y = 0;
+    ball2_speed_x = 0;
+    ball2_speed_y = 0; 
+    
+    print('in pause');
+  }
+  if (mouseX >= 1870 && mouseX <= 1970 && mouseY >= 100 && mouseY <= 200 && pausex1 != 0){
+    ball_speed_x = pausex1;
+    ball_speed_y = pausey1;
+    ball2_speed_x = pausex2;
+    ball2_speed_y = pausey2;
+    
+    pausex1 = 0;
+    pausey1 = 0;
+    pausex2 = 0;
+    pausey2 = 0;
+    
+    print('in play');
+  }
+  print('clicked in');
 }
