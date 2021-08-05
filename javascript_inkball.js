@@ -68,50 +68,20 @@ function animate_ball(){
 }
 
 function bounceball(point_x,point_y){
-  let xcomp = point_x - oldpoint[0];
-  let ycomp = point_y - oldpoint[1];
   
-  let axisx = ycomp;
-  let axisy = xcomp;
+  print(point_y);
   
-  let txt = ('slope of line', xcomp,'   ',ycomp);
-  
-  print(txt);
-  
-  let xdiff = axisx - ball_speed_x;
-  let ydiff = axisy - ball_speed_y;
-  
-  let xprop = ball_speed_x + xdiff + xdiff;
-  let yprop = ball_speed_y + ydiff + ydiff;
-  
-  ball_speed_x = 7;
-  ball_speed_y = (7*yprop)/xprop;
+  ball_speed_x = ((point_x - oldpoint[0]) - ball_speed_x - ball_speed_x);
+  ball_speed_y = ((point_y - oldpoint[1]) - ball_speed_y - ball_speed_y);
   
   ball_direction = 'speed control';
         
 }
 
 function bounceball2(point_x,point_y){
-  let xcomp = point_x - oldpoint[0];
-  let ycomp = point_y - oldpoint[1];
   
-  let txt = ('slope of line', xcomp,'   ',ycomp);
-  
-  print(txt);
-  
-  let axisx = ycomp;
-  let axisy = xcomp;
-  
-  //print(axisx,'    ',axisy);
-  
-  let xdiff = axisx - ball_speed2_x;
-  let ydiff = axisy - ball_speed2_y;
-  
-  let xprop = ball2_speed_x + xdiff + xdiff;
-  let yprop = ball2_speed_y + ydiff + ydiff;
-  
-  ball2_speed_x = 7;
-  ball2_speed_y = (7*yprop)/xprop;
+  ball2_speed_x = ((point_x - oldpoint[0]) - ball2_speed_x - ball2_speed_x);
+  ball2_speed_y = ((point_y - oldpoint[1]) - ball2_speed_y - ball2_speed_y);
   
   ball_direction = 'speed control';
         
