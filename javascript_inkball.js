@@ -131,6 +131,8 @@ function bounceball2(point_x,point_y){
 }
 
 function draw() {
+  
+  print('pausex1 ',pausex1,' pausey1 ',pausey1,' pausex2 ',pausex2,' pausey2 ',pausey2);
   frameRate(50000);
   print(linedraw);
   
