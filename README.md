@@ -6,7 +6,7 @@
   - however, only 4 lines can be drawn at one time
   - 4 lines should be enough but i can increase it
 
-- ball bounces in wrong direction
+- ball sometimes bounces in wrong direction
 
 - The game also ends when then the ball goes into its hole
 
