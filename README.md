@@ -9,7 +9,7 @@
 # Status
   - ball bouncing:
     - bounces in correct direction off of walls
-    - balls bounce off of each other in correct angle
+    - balls bounce off of each other in correct angle (works VERY WELL)
     - bounces in WRONG direction when it hits lines
       - I'm trying various algorithms to calculate the ball's direction using the lines direction and the ball's direction
       - sometimes the ball doesn't make the line disappear and does not change direction at all.
