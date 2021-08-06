@@ -16,9 +16,7 @@
 
   - getting into hole
     - works
-    - tells when ball in wrong hole
-
-  - 
+    - tells when ball gets in wrong hole
 
 fyi i'm using the processing editor for this project
 
