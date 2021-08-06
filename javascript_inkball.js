@@ -46,13 +46,22 @@ function animate_ball(){
     ball_x = ball_x + ball_speed_x;
     ball_y = ball_y + ball_speed_y;
     
-    if (ball_y <= 50 || ball_y >= 750){
+    if (ball_y <= 50 ){
+      ball_y = 55;
       ball_speed_y = -1 * ball_speed_y;
     }
-    
-    if (ball_x <= 50 || ball_x >= 1793){
+    if (ball_y >= 750){
+      ball_y = 745;
+      ball_speed_y = -1 * ball_speed_y;
+    }
+    if (ball_x <= 50 ){
+      ball_x = 55;
       ball_speed_x = -1 * ball_speed_x;
     } 
+    if (ball_x >= 1800){
+      ball_x = 1795;
+      ball_speed_x = -1 * ball_speed_x;
+    }
     
     ball2_x = ball2_x + ball2_speed_x;
     ball2_y = ball2_y + ball2_speed_y;
