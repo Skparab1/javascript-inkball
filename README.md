@@ -11,10 +11,13 @@
     - bounces in correct direction off of walls
     - balls bounce off of each other in correct angle
     - bounces in WRONG direction when it hits lines
+      - sometimes the ball doesn't make the line disappear and does not change direction at all.
 
   - getting into hole
     - works
     - tells when ball in wrong hole
+
+  - 
 
 fyi i'm using the processing editor for this project
 
