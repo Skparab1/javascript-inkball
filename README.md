@@ -12,8 +12,6 @@
 
 - there is only one level with no obstacles, more can be added later
 
-# gif of game below
-
 ![](inkball_gif2.gif)
 
 the ball animation is actually much smoother than what it shows because the gif's frame rate is low
