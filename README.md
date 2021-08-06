@@ -1,5 +1,5 @@
 # Javascript inkball
- 
+ - Inkball is a video game developed by Microsoft. In the game, you try to direct balls into holes of corresponding colors by drawing lines which the balls bounce off.
 
 ![](inkball_gif2.gif)
 
@@ -10,6 +10,7 @@
     - bounces in correct direction off of walls
     - balls bounce off of each other in correct angle
     - bounces in WRONG direction when it hits lines
+
 
 fyi i'm using the processing editor for this project
 
