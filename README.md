@@ -4,7 +4,6 @@
 
 - drawing and ball moving works well
   - however, only 4 lines can be drawn at one time
-  - 4 lines should be enough but i can increase it
 
 ![](inkball_gif2.gif)
 
