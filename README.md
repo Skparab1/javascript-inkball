@@ -1,4 +1,5 @@
 # Javascript inkball
+ 
 
 ![](inkball_gif2.gif)
 
@@ -8,6 +9,7 @@
   - ball bouncing:
     - bounces in correct direction off of walls
     - balls bounce off of each other in correct angle
+    - bounces in WRONG direction when it hits lines
 
 fyi i'm using the processing editor for this project
 
