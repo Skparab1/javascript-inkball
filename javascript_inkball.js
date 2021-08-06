@@ -80,8 +80,14 @@ function bounceball(point_x,point_y){
   
   print(point_y);
   
-  ball_speed_x = ((point_x - oldpoint[0]) - ball_speed_x - ball_speed_x);
-  ball_speed_y = ((point_y - oldpoint[1]) - ball_speed_y - ball_speed_y);
+  y = point_x - oldpoint[0];
+  x = point_y - oldpoint[1];
+  
+  angle = Math.tan(Math.atan(ball_speed_y/ball_speed_x) + Math.atan(y/x) + Math.atan(ball_speed_y/ball_speed_x) + Math.atan(y/x));
+  
+  ball_speed_x = round(Math.sin(angle) * 7);
+  
+  ball_speed_y = round(Math.cos(angle) * 7);
   
   ball_direction = 'speed control';
         
@@ -89,8 +95,17 @@ function bounceball(point_x,point_y){
 
 function bounceball2(point_x,point_y){
   
-  ball2_speed_x = ((point_x - oldpoint[0]) - ball2_speed_x - ball2_speed_x);
-  ball2_speed_y = ((point_y - oldpoint[1]) - ball2_speed_y - ball2_speed_y);
+ 
+  print(point_y);
+  
+  y = point_x - oldpoint[0];
+  x = point_y - oldpoint[1];
+  
+  angle = Math.tan(Math.atan(ball2_speed_y/ball2_speed_x) + Math.atan(y/x) + Math.atan(ball2_speed_y/ball2_speed_x) + Math.atan(y/x));
+  
+  ball2_speed_x = round(Math.sin(angle) * 7);
+  
+  ball2_speed_y = round(Math.cos(angle) * 7);
   
   ball_direction = 'speed control';
         
@@ -295,8 +310,13 @@ function draw() {
     ball_speed_y = -7;
   }
   
-  if ((ball_speed_x == 0 && ball_speed_y == 0 && pauseboolean == false) || isNaN(ball_speed_x) || ball_speed_y == isNaN){
-    //ball_speed_x = 7;
+  if ((ball_speed_x == 0 && ball_speed_y == 0 && pauseboolean == false) || isNaN(ball_speed_x) || isNaN(ball_speed_y)){
+    ball_speed_x = 7;
+    ball_speed_y = 0;
+  }
+  if ((ball2_speed_x == 0 && ball2_speed_y == 0 && pauseboolean == false) || isNaN(ball2_speed_x) || isNaN(ball2_speed_y)){
+    ball2_speed_x = 7;
+    ball2_speed_y = 0;
   }
   
   strokeWeight(2);
