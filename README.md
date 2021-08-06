@@ -5,6 +5,7 @@
 - The ball animation is actually much smoother than what it shows because the gif's frame rate is low
 
 # Status
+  - ball bouncing:
 
 fyi i'm using the processing editor for this project
 
