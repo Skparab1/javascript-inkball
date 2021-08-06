@@ -11,6 +11,8 @@
     - balls bounce off of each other in correct angle
     - bounces in WRONG direction when it hits lines
 
+  - getting into hole
+
 
 fyi i'm using the processing editor for this project
 
