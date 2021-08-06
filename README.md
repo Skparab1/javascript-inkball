@@ -12,7 +12,7 @@
     - bounces in WRONG direction when it hits lines
 
   - getting into hole
-
+    - works
 
 fyi i'm using the processing editor for this project
 
