@@ -6,8 +6,6 @@
   - however, only 4 lines can be drawn at one time
   - 4 lines should be enough but i can increase it
 
-- ball sometimes bounces in wrong direction
-
 ![](inkball_gif2.gif)
 
 the ball animation is actually much smoother than what it shows because the gif's frame rate is low
