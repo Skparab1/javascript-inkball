@@ -3,7 +3,6 @@
 - The video game inkball in JavaScript
 
 - drawing and ball moving works well
-  - however, only 4 lines can be drawn at one time
 
 ![](inkball_gif2.gif)
 
