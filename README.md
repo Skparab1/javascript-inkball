@@ -6,6 +6,7 @@
 
 # Status
   - ball bouncing:
+    - bounces in correct direction off of walls
 
 fyi i'm using the processing editor for this project
 
