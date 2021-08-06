@@ -1,7 +1,5 @@
 # javascript-inkball
 
-- The video game inkball in JavaScript
-
 ![](inkball_gif2.gif)
 
 the ball animation is actually much smoother than what it shows because the gif's frame rate is low
