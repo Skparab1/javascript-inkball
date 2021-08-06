@@ -1,10 +1,10 @@
-# javascript-inkball
+# Javascript inkball
 
 ![](inkball_gif2.gif)
 
-- the ball animation is actually much smoother than what it shows because the gif's frame rate is low
+- The ball animation is actually much smoother than what it shows because the gif's frame rate is low
 
-# status
+# Status
 
 fyi i'm using the processing editor for this project
 
