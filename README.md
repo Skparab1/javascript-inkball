@@ -8,8 +8,6 @@
 
 - ball sometimes bounces in wrong direction
 
-- The game also ends when then the ball goes into its hole
-
 ![](inkball_gif2.gif)
 
 the ball animation is actually much smoother than what it shows because the gif's frame rate is low
