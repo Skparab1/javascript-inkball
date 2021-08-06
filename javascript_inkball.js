@@ -78,16 +78,9 @@ function animate_ball(){
 
 function bounceball(point_x,point_y){
   
-  print(point_y);
-  
-  y = point_x - oldpoint[0];
-  x = point_y - oldpoint[1];
-  
-  angle = Math.tan(Math.atan(ball_speed_y/ball_speed_x) + Math.atan(y/x) + Math.atan(ball_speed_y/ball_speed_x) + Math.atan(y/x));
-  
-  ball_speed_x = round(Math.sin(angle) * 7);
-  
-  ball_speed_y = round(Math.cos(angle) * 7);
+  storer = ball_speed_x;
+  ball_speed_x = ball_speed_y;
+  ball_speed_y = storer;
   
   ball_direction = 'speed control';
         
@@ -95,17 +88,9 @@ function bounceball(point_x,point_y){
 
 function bounceball2(point_x,point_y){
   
- 
-  print(point_y);
-  
-  y = point_x - oldpoint[0];
-  x = point_y - oldpoint[1];
-  
-  angle = Math.tan(Math.atan(ball2_speed_y/ball2_speed_x) + Math.atan(y/x) + Math.atan(ball2_speed_y/ball2_speed_x) + Math.atan(y/x));
-  
-  ball2_speed_x = round(Math.sin(angle) * 7);
-  
-  ball2_speed_y = round(Math.cos(angle) * 7);
+  storer = ball2_speed_x;
+  ball2_speed_x = ball2_speed_y;
+  ball2_speed_y = storer;
   
   ball_direction = 'speed control';
         
