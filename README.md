@@ -17,8 +17,8 @@
       - sometimes the ball doesn't make the line disappear and does not change direction at all.
 
   - getting into hole
-    - works
-    - tells when ball gets in wrong hole
+    - says you win when ball goes into correct hole.
+    - tells when ball gets in wrong hole.
 
 fyi i'm using the processing editor for this project
 
