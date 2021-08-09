@@ -5,7 +5,7 @@
 
 ![](inkball_gif2.gif)
 
-- The ball animation is actually much smoother than what it shows because the gif's frame rate is low
+- The ball animation is actually smoother than what it shows because the gif's frame rate is low
 
 # Status
   - ball bouncing:
